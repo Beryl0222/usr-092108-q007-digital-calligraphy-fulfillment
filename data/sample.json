@@ -1,0 +1,9 @@
+{
+  "event_id": "092108-007-sample-001",
+  "event_type": "SERIAL_HELD",
+  "aggregate_type": "edition",
+  "aggregate_id": "digital_calligraphy_fulfillment-001",
+  "occurred_at": "2026-09-20T18:00:00+08:00",
+  "version": 1,
+  "summary": "登记数字草书限量履约的首条领域记录"
+}
