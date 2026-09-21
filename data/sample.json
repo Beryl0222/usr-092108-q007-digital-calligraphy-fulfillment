@@ -1,9 +1,19 @@
 {
-  "event_id": "092108-007-sample-001",
+  "event_id": "CAOSHU-1:SERIAL_HELD:req-order-0921-0001",
   "event_type": "SERIAL_HELD",
-  "aggregate_type": "edition",
-  "aggregate_id": "digital_calligraphy_fulfillment-001",
-  "occurred_at": "2026-09-20T18:00:00+08:00",
+  "aggregate_type": "variant",
+  "aggregate_id": "CAOSHU-1",
+  "occurred_at": "2026-09-21T10:00:00+08:00",
   "version": 1,
-  "summary": "登记数字草书限量履约的首条领域记录"
+  "summary": "款式 CAOSHU-1 序号 1 为订单 O-20260921-0001 保留",
+  "payload": {
+    "variant_id": "CAOSHU-1",
+    "serial": 1,
+    "order_id": "O-20260921-0001",
+    "user_id": "u-sample",
+    "expires_at": "2026-09-21T10:15:00+08:00",
+    "reason": "下单保留"
+  },
+  "causation_id": "req-order-0921-0001",
+  "correlation_id": "O-20260921-0001"
 }

@@ -19,20 +19,52 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "PROJECT_CREATED",
+        "VARIANT_OPENED",
+        "VARIANT_CLOSED",
+        "ELIGIBILITY_GRANTED",
+        "ELIGIBILITY_REVOKED",
         "SERIAL_HELD",
+        "HOLD_EXTENDED",
+        "HOLD_RELEASED",
+        "ORDER_PLACED",
+        "ORDER_CANCELLED",
         "PAYMENT_CONFIRMED",
+        "PAYMENT_LATE_REJECTED",
+        "REFUND_GRANTED",
+        "REGISTRATION_REQUESTED",
         "REGISTRATION_ACCEPTED",
+        "REGISTRATION_FAILED",
+        "REGISTRATION_CORRECTED",
+        "PHYSICAL_ALLOCATED",
+        "PHYSICAL_QUARANTINED",
         "PHYSICAL_DISPATCHED",
+        "PHYSICAL_DELIVERED",
+        "PHYSICAL_LOST",
+        "PHYSICAL_RESENT",
+        "PHYSICAL_RETURNED",
+        "INVOICE_REQUESTED",
+        "INVOICE_ISSUED",
+        "INVOICE_VOIDED",
+        "INVOICE_REISSUED",
+        "ARBITRATION_OPENED",
+        "ARBITRATION_RESOLVED",
         "ORDER_REMEDIED"
       ]
     },
     "aggregate_type": {
       "type": "string",
       "enum": [
-        "edition",
-        "serial_reservation",
+        "edition_project",
+        "variant",
+        "eligibility",
         "purchase_order",
-        "fulfillment_case"
+        "registration_ledger",
+        "fulfillment_case",
+        "invoice",
+        "arbitration_case",
+        "edition",
+        "serial_reservation"
       ]
     },
     "aggregate_id": {
@@ -45,11 +77,24 @@
     },
     "version": {
       "type": "integer",
-      "minimum": 1
+      "minimum": 1,
+      "description": "该事件在所属聚合流上的连续版本号，从 1 开始"
     },
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "payload": {
+      "type": "object",
+      "description": "只包含完成职责所必需的字段；涉及个人信息时对外脱敏"
+    },
+    "causation_id": {
+      "type": ["string", "null"],
+      "description": "触发本事件的外部命令/回调标识，用于幂等去重"
+    },
+    "correlation_id": {
+      "type": ["string", "null"],
+      "description": "同一业务过程的串联标识（一般为订单号）"
     }
   },
   "additionalProperties": true
