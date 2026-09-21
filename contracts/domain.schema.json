@@ -19,19 +19,48 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "PROJECT_PUBLISHED",
+        "VARIANT_CONFIGURED",
+        "CLAIM_RULE_PUBLISHED",
+        "ENTITLEMENT_GRANTED",
         "SERIAL_HELD",
-        "PAYMENT_CONFIRMED",
+        "HOLD_RELEASED",
+        "SERIAL_ISOLATED",
+        "ORDER_PLACED",
+        "ORDER_CANCELLED",
+        "PAYMENT_REGISTERED",
+        "PAYMENT_SETTLED",
+        "PAYMENT_REFUNDED",
+        "REGISTRATION_REQUESTED",
         "REGISTRATION_ACCEPTED",
+        "REGISTRATION_CORRECTED",
+        "PHYSICAL_ALLOCATED",
+        "PHYSICAL_PACKED",
         "PHYSICAL_DISPATCHED",
+        "PHYSICAL_DELIVERED",
+        "PHYSICAL_RETURNED",
+        "PHYSICAL_LOST",
+        "PHYSICAL_REPLACEMENT_ALLOCATED",
+        "PHYSICAL_ISOLATED",
+        "FULFILLMENT_REVOKED",
+        "INVOICE_ISSUED",
+        "INVOICE_VOIDED",
+        "ARBITRATION_OPENED",
+        "ARBITRATION_RESOLVED",
         "ORDER_REMEDIED"
       ]
     },
     "aggregate_type": {
       "type": "string",
       "enum": [
+        "project",
         "edition",
-        "serial_reservation",
+        "serial_pool",
+        "entitlement",
         "purchase_order",
+        "registration",
+        "physical_shipment",
+        "invoice",
         "fulfillment_case"
       ]
     },
@@ -50,6 +79,22 @@
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "payload": {
+      "type": "object"
+    },
+    "causation_id": {
+      "type": "string",
+      "description": "触发本事件的外部请求标识；同标识重复送达必须幂等。"
+    },
+    "correlation_id": {
+      "type": "string",
+      "description": "串联一次下单牵动的数字、实体、发票等记录。"
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "存储层分配的全局追加序号。"
     }
   },
   "additionalProperties": true
